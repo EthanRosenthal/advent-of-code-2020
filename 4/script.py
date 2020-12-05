@@ -121,7 +121,7 @@ def part_2():
     required_fields = set(parse_map.keys())
     num_valid_passports = 0
     valid_fields_seen = set()
-    valid_fields_ever_seen = set()
+
     for line in lines:
         if not line:
             # Done parsing this passport.
@@ -139,13 +139,12 @@ def part_2():
                 continue
             if parse_func(value):
                 valid_fields_seen.update([field])
-                valid_fields_ever_seen.update([field])
+
     # If the last line is not an empty line, then
     # we need to handle the last passport
     if line:
         if valid_fields_seen & required_fields == required_fields:
             num_valid_passports += 1
-    print(valid_fields_ever_seen)
     return num_valid_passports
 
 
